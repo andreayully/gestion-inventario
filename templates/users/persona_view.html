@@ -1,0 +1,104 @@
+{% extends 'blank.html' %}
+
+
+{% block content %}
+<div class="container">
+  <div class="card mb-3">
+    <div class="card-header">Detalles</div>
+    <div class="card-body">
+      <table style="width:45%">
+        <tr>
+          <th>Nombre:</th>
+          <th>{{persona.first_name}}</th>
+        </tr>
+        <tr>
+          <th>Apellido:</th>
+          <th>{{persona.last_name}}</th>
+        </tr>
+        <tr>
+          <th>Identificacion: </th>
+          <th>{{persona.identificacion}}</th>
+        </tr>
+        <tr>
+          <th>Email: </th>
+          <th>{{persona.email}}</th>
+        </tr>
+        <tr>
+          <th>Agregar Recurso <a href="{% url 'recursos:add_recurso' id=persona.id %}"><i class="fas fa-plus-square"></i></a></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="tabla" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>CODIGO</th>
+              <th>NOMBRE</th>
+              <th>CATEGORIA</th>
+              <th>MARCA</th>
+              <th>FECHA DE ASIGANCION</th>
+              <th>OPCIONES</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th>CODIGO</th>
+              <th>NOMBRE</th>
+              <th>CATEGORIA</th>
+              <th>MARCA</th>
+              <th>FECHA DE ASIGANCION</th>
+              <th>OPCIONES</th>
+            </tr>
+          </tfoot>
+          <tbody>
+            {% for a in articulos %}
+            <tr>
+              <td>{{a.codigo}}</td>
+              <td>{{a.nombre}}</td>
+              <td>{{a.categoria}}</td>
+              <td>{{a.marca}}</td>
+              <td>{{a.fecha_asignacion}}</td>
+              <td><a href="{% url 'recursos:delete_recurso' recurso_id=a.id persona_id=persona.id %}"><i class="fas fa-trash-alt"></i></a></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+<script>
+$(document).ready(function()
+{
+    var table = $('#tabla').DataTable( {
+        "language": {
+            url: "/static/localizacion/es_ES.json"
+        }
+    } );
+
+    $('#tabla tbody').on( 'click', 'tr', function()
+    {
+        if ($(this).hasClass('selected') )
+        {
+            $(this).removeClass('selected');
+
+        }
+        else
+        {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    });
+
+});
+</script>
+{% endblock js %}

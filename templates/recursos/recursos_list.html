@@ -1,0 +1,89 @@
+{% extends 'blank.html' %}
+{% load bootstrap_tags %}
+
+{% block content %}
+<div class="card mb-3">
+      <div class="card-header">
+        <a href="{% url 'recursos:create_recurso' %}"><i class="fas fa-plus-square"></i></a> Agregar Recurso
+        {% if is_add %}
+        Asignar Recurso a: {{persona}}
+        {% endif %}
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="tabla" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>CODIGO</th>
+                <th>NOMBRE</th>
+                <th>CATEGORIA</th>
+                <th>MARCA</th>
+                <th>ASIGNADO A</th>
+                <th>FECHA DE ASIGANCION</th>
+                <th>OPCIONES</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>CODIGO</th>
+                <th>NOMBRE</th>
+                <th>CATEGORIA</th>
+                <th>MARCA</th>
+                <th>ASIGNADO A</th>
+                <th>FECHA DE ASIGANCION</th>
+                <th>OPCIONES</th>
+              </tr>
+            </tfoot>
+            <tbody>
+              {% for recurso in recursos %}
+              <tr>
+                <td>{{recurso.codigo}}</td>
+                <td>{{recurso.nombre}}</td>
+                <td>{{recurso.categoria}}</td>
+                <td>{{recurso.marca}}</td>
+                <td>{{recurso.persona_asignada}}</td>
+                <td>{{recurso.fecha_asignacion}}</td>
+                {% if is_add %}
+                  <td><a href="{% url 'recursos:asg_recurso' recurso_id=recurso.id persona_id=persona.id %}"><i class="fas fa-plus-square"></i></a></td>
+                {% else %}
+                  <td><a href="{% url 'recursos:update_recurso' id=recurso.id %}"><i class="fas fa-pen-square"></i></a></td>
+                {% endif %}
+
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+{% endblock %}
+
+{% block js %}
+
+<script>
+$(document).ready(function()
+{
+    var table = $('#tabla').DataTable( {
+        "language": {
+            url: "/static/localizacion/es_ES.json"
+        }
+    } );
+
+    $('#tabla tbody').on( 'click', 'tr', function()
+    {
+        if ($(this).hasClass('selected') )
+        {
+            $(this).removeClass('selected');
+
+        }
+        else
+        {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    });
+
+});
+</script>
+{% endblock js %}

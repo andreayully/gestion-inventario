@@ -1,0 +1,19 @@
+{% extends 'blank.html' %}
+{% load bootstrap_tags %}
+
+{% block content %}
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">Registrar Personas</div>
+    <div class="card-body">
+      <form action="" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          {% csrf_token %}
+            {{ form|as_bootstrap }}
+        </div>
+         <input type="submit" value="Guardar" class="btn btn-primary btn-block">
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

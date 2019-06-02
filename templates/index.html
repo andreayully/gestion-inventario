@@ -1,0 +1,45 @@
+{% extends 'blank.html' %}
+{% load bootstrap_tags %}
+{% block content %}
+<h1>Modulos para la gestion de personas y recursos</h1>
+<hr>
+<div class="row">
+      <div class="col-xl-6 col-sm-6 mb-3">
+        <div class="card text-white bg-primary o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fas fa-fw fa-list"></i>
+            </div>
+            <div class="mr-5">Modulo de Personas</div>
+          </div>
+          <a class="card-footer text-white clearfix small z-1" href="{% url 'users:list_persona'%}">
+              <span class="float-left">Lista de Personas</span>
+              <span class="float-right"><i class="fas fa-clipboard-list fa-2x"></i></span>
+          </a>
+          <a class="card-footer text-white clearfix small z-1" href="{% url 'users:create_persona'%}">
+            <span class="float-left">Crear Persona</span>
+            <span class="float-right"><i class="fas fa-user-plus fa-2x"></i></span>
+          </a>
+        </div>
+      </div>
+      <div class="col-xl-6 col-sm-6 mb-3">
+        <div class="card text-white bg-warning o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fas fa-fw fa-list"></i>
+            </div>
+            <div class="mr-5">Modulo de Recursos</div>
+          </div>
+          <a class="card-footer text-white clearfix small z-1" href="{% url 'recursos:list_recurso'%}">
+            <span class="float-left">Lista de Recursos</span>
+            <span class="float-right"><i class="fas fa-clipboard-list fa-2x"></i></span>
+          </a>
+          <a class="card-footer text-white clearfix small z-1" href="{% url 'recursos:create_recurso'%}">
+            <span class="float-left">Crear Recursos</span>
+            <span class="float-right"><i class="fas fa-plus-square fa-2x"></i></span>
+          </a>
+        </div>
+      </div>
+      </div>
+    </div>
+{% endblock%}

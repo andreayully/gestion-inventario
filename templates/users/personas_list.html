@@ -1,0 +1,76 @@
+{% extends 'blank.html' %}
+{% load static %}
+
+{% block content %}
+<div class="card mb-3">
+      <div class="card-header">
+        <a href="{% url 'users:create_persona' %}"><i class="fas fa-user-plus"></i></a>
+        Registrar Personas
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="tabla" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>NOMBRE</th>
+                <th>APELLIDO</th>
+                <th>IDENTIFICACION</th>
+                <th>EMAIL</th>
+                <th>DETALLE</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>NOMBRE</th>
+                <th>APELLIDO</th>
+                <th>IDENTIFICACION</th>
+                <th>EMAIL</th>
+                <th>DETALLE</th>
+              </tr>
+            </tfoot>
+            <tbody>
+              {% for persona in personas %}
+              <tr>
+                <td>{{persona.first_name}}</td>
+                <td>{{persona.last_name}}</td>
+                <td>{{persona.identificacion}}</td>
+                <td>{{persona.email}}</td>
+                <td><a href="{% url 'users:persona_view' id=persona.id %}"><i class="fas fa-info-circle"></i></a></td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+{% endblock %}
+
+{% block js %}
+
+<script>
+$(document).ready(function()
+{
+    var table = $('#tabla').DataTable( {
+        "language": {
+            url: "/static/localizacion/es_ES.json"
+        }
+    } );
+
+    $('#tabla tbody').on( 'click', 'tr', function()
+    {
+        if ($(this).hasClass('selected') )
+        {
+            $(this).removeClass('selected');
+
+        }
+        else
+        {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    });
+
+});
+</script>
+{% endblock js %}

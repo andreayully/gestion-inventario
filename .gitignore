@@ -1,0 +1,6 @@
+*.pyc
+__ pycache __
+inventario_env/
+db.sqlite3
+.DS_Store
+*~
