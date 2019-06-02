@@ -20,6 +20,8 @@ Aplicación Web utilizando Django como framework Web que permite gestionar el in
 
 5. Runserver ``` python manage.py runserver ``` [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
+6. Crear "Categorias desde el admin de Django"
+
 ### Características
 - Django 1.11
 - Base de datos noSql - SQLite
