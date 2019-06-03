@@ -9,7 +9,7 @@ Aplicación Web utilizando Django como framework Web que permite gestionar el in
 ### Probar de manera local
   * Pre-requisitos Python 3.+ y Virtualenv
 
-  1. Crear ambiente virtual **virtualenv inventario_env** y activar el ambiente **source galery_env/bin/activate**
+1. Crear ambiente virtual **virtualenv inventario_env** y activar el ambiente **source inventario_env/bin/activate**
 2. Clonar el proyecto **git clone https://github.com/andreayully/gestion-inventario.git**
 3. **cd gestion-inventario/**
 
@@ -20,7 +20,11 @@ Aplicación Web utilizando Django como framework Web que permite gestionar el in
 
 5. Runserver ``` python manage.py runserver ``` [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
-6. Crear "Categorias desde el admin de Django"
+6. Crear "Categorias desde el admin de Django" o crear categorias predeterminada del cat_category.py
+  - Desde la Shell de Django ``` python manage.py shell```
+  - Copiar y pegar
+  1. ```from recursos.cat_factory import generar_categorias ```
+  2. ``` generar_categorias() ```
 
 ### Características
 - Django 1.11
