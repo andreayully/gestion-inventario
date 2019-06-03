@@ -22,8 +22,9 @@ Aplicación Web utilizando Django como framework Web que permite gestionar el in
 
 6. Crear "Categorias desde el admin de Django" o crear categorias predeterminada del cat_category.py
   - Desde la Shell de Django ``` python manage.py shell```
-  - ```from recursos.cat_factory import generar_categorias ```
-  - ``` generar_categorias() ```
+  - Copiar y pegar
+  1. ```from recursos.cat_factory import generar_categorias ```
+  2. ``` generar_categorias() ```
 
 ### Características
 - Django 1.11
