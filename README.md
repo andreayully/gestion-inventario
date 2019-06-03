@@ -20,7 +20,7 @@ Aplicación Web utilizando Django como framework Web que permite gestionar el in
 
 5. Runserver ``` python manage.py runserver ``` [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
-6. Crear "Categorias desde el admin de Django" o crear categorias predeterminada del cat_category.py
+6. Crear "Categorias desde el admin de Django" o crear categorias predeterminada del cat_factory.py
   - Desde la Shell de Django ``` python manage.py shell```
   - Copiar y pegar
   1. ```from recursos.cat_factory import generar_categorias ```
